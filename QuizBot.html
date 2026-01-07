@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizBot | AI Frontend Quiz Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>QuizBot</h1>
+                        <p>AI-Powered Frontend Developer Quiz</p>
+                    </div>
+                </div>
+                
+                <div class="mode-selector">
+                    <button class="mode-btn active" id="practice-mode">
+                        <i class="fas fa-graduation-cap"></i> Practice
+                    </button>
+                    <button class="mode-btn" id="test-mode">
+                        <i class="fas fa-clock"></i> Test
+                    </button>
+                    <button class="mode-btn" id="timed-mode">
+                        <i class="fas fa-stopwatch"></i> Timed
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <section class="section-box">
+                        <h2 class="section-title">
+                            <i class="fas fa-list"></i> Select Topics
+                        </h2>
+                        <div class="topic-list" id="topic-list">
+                            <!-- Topics will be loaded by JavaScript -->
+                        </div>
+                    </section>
+
+                    <section class="section-box">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-line"></i> Difficulty
+                        </h2>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn" data-level="beginner">
+                                <i class="fas fa-seedling"></i> Beginner
+                            </button>
+                            <button class="difficulty-btn selected" data-level="intermediate">
+                                <i class="fas fa-rocket"></i> Intermediate
+                            </button>
+                            <button class="difficulty-btn" data-level="advanced">
+                                <i class="fas fa-crown"></i> Advanced
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="section-box">
+                        <h2 class="section-title">
+                            <i class="fas fa-sliders-h"></i> Settings
+                        </h2>
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <label for="question-count">
+                                    <i class="fas fa-question-circle"></i> Questions:
+                                </label>
+                                <div class="number-input">
+                                    <button class="number-btn" id="decrease-btn">-</button>
+                                    <input type="number" id="question-count" min="3" max="15" value="5">
+                                    <button class="number-btn" id="increase-btn">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="generate-btn" id="generate-btn">
+                            <i class="fas fa-magic"></i> Generate Quiz
+                        </button>
+                    </section>
+                </aside>
+
+                <!-- Main Content Area -->
+                <div class="main-content">
+                    <!-- Welcome Screen -->
+                    <div class="welcome-screen" id="welcome-screen">
+                        <div class="welcome-content">
+                            <div class="welcome-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h2>Welcome to QuizBot!</h2>
+                            <p>Select topics, choose difficulty, and let our AI generate personalized frontend development questions for you.</p>
+                            
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <h3>Multiple Topics</h3>
+                                    <p>JavaScript, HTML, CSS, React & more</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <h3>AI Generated</h3>
+                                    <p>Unique questions every time</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h3>Track Progress</h3>
+                                    <p>Monitor your improvement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Container -->
+                    <div class="quiz-container" id="quiz-container">
+                        <!-- Quiz will be loaded here by JavaScript -->
+                    </div>
+
+                    <!-- Results Container -->
+                    <div class="results-container" id="results-container">
+                        <!-- Results will be loaded here by JavaScript -->
+                    </div>
+
+                    <!-- Loading Screen -->
+                    <div class="loading-screen" id="loading-screen">
+                        <div class="spinner"></div>
+                        <h3>Generating Your Quiz...</h3>
+                        <p>Our AI is creating personalized questions for you</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>QuizBot - Created for Frontend Developers</p>
+                    <p class="copyright">© 2026 QuizBot-JavaScript project.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-question-circle"></i> Help
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
